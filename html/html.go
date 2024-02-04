@@ -4,7 +4,6 @@ import (
 	"embed"
 	"html/template"
 	"io"
-	"todo-list/domain/todo"
 )
 
 //go:embed *
@@ -14,21 +13,13 @@ func parse(file string) *template.Template {
 	return template.Must(template.New("layout.html").ParseFS(files, "layout.html", file))
 }
 
-type TodoParams struct {
-	PageTitle string
-	Todos     []todo.Todo
+type HomeParams struct {
+	Title string
 }
 
-func Todo(w io.Writer, p TodoParams, partial string) error {
+func Home(w io.Writer, p HomeParams, partial string) error {
 	if partial == "" {
 		partial = "layout.html"
 	}
 	return parse("index.html").ExecuteTemplate(w, partial, p)
-}
-
-func Home(w io.Writer, p TodoParams, partial string) error {
-	if partial == "" {
-		partial = "layout.html"
-	}
-	return parse("home.html").ExecuteTemplate(w, partial, p)
 }
