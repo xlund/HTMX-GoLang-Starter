@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
     <title>{{ block "title" . }}Base {{end}}</title>
   </head>
   <body>
-    {{block "body" .}}
-    <h1>No content</h1>
-    {{end}}
+    <div class="layout">
+      <main id="content">
+        {{block "body" .}}
+        <h1>No content</h1>
+        {{end}}
+      </main>
+    </div>
   </body>
 </html>

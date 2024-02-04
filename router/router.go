@@ -1,7 +1,7 @@
 package router
 
 import (
-	"go-starter/html"
+	"go-starter/router"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -11,14 +11,16 @@ import (
 func New() *chi.Mux {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", home)
+	r.Get("/", router.Home)
+	handleStatic(r)
 	return r
 }
 
-func home(w http.ResponseWriter, r *http.Request) {
-	html.Home(w, html.HomeParams{
-		Title: "Home",
-	}, partial(r))
+func handleStatic(r *chi.Mux) {
+	prefix := "/static/"
+	dir := http.Dir("html/static")
+	fs := http.FileServer(dir)
+	r.Handle(prefix, fs)
 }
 
 func partial(r *http.Request) string {

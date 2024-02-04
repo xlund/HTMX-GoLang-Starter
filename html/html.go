@@ -10,7 +10,7 @@ import (
 var files embed.FS
 
 func parse(file string) *template.Template {
-	return template.Must(template.New("layout.html").ParseFS(files, "layout.html", file))
+	return template.Must(template.New("layout.html").ParseFS(files, "layout.html", "sidebar.html", file))
 }
 
 type HomeParams struct {
