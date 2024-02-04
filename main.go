@@ -15,7 +15,6 @@ var (
 
 func main() {
 	flag.Parse()
-	_ = mime.AddExtensionType((".css"), "text/css")
 	router := router.New()
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	fmt.Printf("Listening on %s...\n", addr)
