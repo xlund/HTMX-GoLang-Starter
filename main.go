@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"go-starter/router"
-	"mime"
 	"net/http"
 )
 
