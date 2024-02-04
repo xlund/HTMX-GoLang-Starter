@@ -19,7 +19,8 @@ func handleStatic(r *chi.Mux) {
 	prefix := "/static/"
 	dir := http.Dir("html/static")
 	fs := http.FileServer(dir)
-	r.Handle(prefix, fs)
+
+	r.Handle("/static/*", http.StripPrefix(prefix, fs))
 }
 
 func partial(r *http.Request) string {
