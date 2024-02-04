@@ -1,7 +1,6 @@
 package router
 
 import (
-	"go-starter/router"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -11,7 +10,7 @@ import (
 func New() *chi.Mux {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", router.Home)
+	r.Get("/", Home)
 	handleStatic(r)
 	return r
 }
