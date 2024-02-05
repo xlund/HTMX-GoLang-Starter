@@ -1,0 +1,9 @@
+{{ define "title" }} Usr {{ end }} {{ define "body" }}
+
+<h1>This is user town</h1>
+{{ if .IsAuthenticated}}
+<p>{{ .Name }}</p>
+<p>{{ .Email }}</p>
+{{ else }}
+<p>Not authenticated</p>
+{{ end }} {{end}}
